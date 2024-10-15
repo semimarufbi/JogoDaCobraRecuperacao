@@ -112,5 +112,14 @@ public class Snake : MonoBehaviour
         float n = Mathf.Atan2(dir.y, dir.x)* Mathf.Rad2Deg;
         return n < 0 ? n + 360 : n;
     }
+    private void GrowSnake()
+    {
+        snakeBodySize++;
+        Vector2Int tailPosition = snakePositionList[snakePositionList.Count - 1];
+
+       GameObject newBodyPart = Instantiate(snakeBodyPrefab,new Vector3(tailPosition.x,tailPosition.y,0),Quaternion.identity));
+        snakeBodyParts.Add(newBodyPart.transform);
+
+    }
 
 }
