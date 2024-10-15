@@ -12,10 +12,16 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         pontuacao = 0; //inicializa a pontuaçao
+        AtualizarTextoPontuacao();
 
     }
     public void AdicionarPonto()
     {
         pontuacao++; // incrementa a pontuação
+        AtualizarTextoPontuacao();
+    }
+    private void AtualizarTextoPontuacao()
+    {
+        textoPontuacao.text = "PONTOS: " + pontuacao;
     }
 }
