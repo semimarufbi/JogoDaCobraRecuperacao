@@ -60,6 +60,13 @@ public class GameManager : MonoBehaviour
         // QUando a comida for coletada, gera uma nova
         SpawnFood();
     }
+    public void GameOver()
+    {
+        // Ativa o painel de Game Over
+        gameOverPanel.SetActive(true);
+        // Congela o jogo
+        Time.timeScale = 0f;
+    }
 
 
 
