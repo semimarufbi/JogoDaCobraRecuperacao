@@ -52,7 +52,7 @@ public class Snake : MonoBehaviour
             snakePositionList.Insert(0, previusHeadPosition);
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
-            //transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
+            transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
 
             //UpdateSnakeBody();
             if (snakePositionList.Count > snakeBodySize)
@@ -97,7 +97,7 @@ public class Snake : MonoBehaviour
         {
             if (gridPosition == snakePositionList[i])
             {
-                //GameOver();
+                GameOver();
                 break;
             }
         }
@@ -107,4 +107,10 @@ public class Snake : MonoBehaviour
         GameManager.Instance.GameOver();
         this.enabled = false;
     }
+    private float GetAngleFromVector(Vector2Int dir)
+    {
+        float n = Mathf.Atan2(dir.y, dir.x)* Mathf.Rad2Deg;
+        return n < 0 ? n + 360 : n;
+    }
+
 }
