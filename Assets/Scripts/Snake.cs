@@ -49,12 +49,13 @@ public class Snake : MonoBehaviour
             Vector2Int previusHeadPosition = gridMoveDirection;
             gridPosition += gridMoveDirection;
 
+            Teleportar();
             snakePositionList.Insert(0, previusHeadPosition);
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
             transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
 
-            //UpdateSnakeBody();
+            UpdateSnakeBody();
             if (snakePositionList.Count > snakeBodySize)
             {
                 snakePositionList.RemoveAt(snakePositionList.Count - 1);
@@ -130,6 +131,28 @@ public class Snake : MonoBehaviour
                 snakeBodyParts[i].position = new Vector3(snakePositionList[i].x,snakePositionList[i].y,0);
             }
         }
+    }
+    private void Teleportar()
+    {
+        // Verifica se o objeto saiu dos limites da grade e teleporta para o lado oposto
+        if (gridPosition.x < 0)
+        {
+            gridPosition.x = GameManager.Instance.diametroDoCampo - 1; // Teleporta para o lado direito
+        }
+        else if (gridPosition.x >= GameManager.Instance.diametroDoCampo)
+        {
+            gridPosition.x = 0; // Teleporta para o lado esquerdo
+        }
+
+        if (gridPosition.y < 0)
+        {
+            gridPosition.y = GameManager.Instance.diametroDoCampo - 1; // Teleporta para o lado de cima
+        }
+        else if (gridPosition.y >= GameManager.Instance.diametroDoCampo)
+        {
+            gridPosition.y = 0; // Teleporta para o lado de baixo
+        }
+
     }
 
 }
