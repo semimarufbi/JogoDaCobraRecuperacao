@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public int diametroDoCampo;
     public int[,] grade;
     public GameObject foodPrefab;
+    private GameObject spawnedFood;
     public Camera mainCamera;
     public GameObject gameOverPanel;
 
@@ -31,10 +32,30 @@ public class GameManager : MonoBehaviour
     public void DefinirVelocidade(string value)
     {
         float novaVelocidade;
-        if(float.TryParse(value,out novaVelocidade) && novaVelocidade > 0s)
-        // Chama o método para definir a velocidade da cobra
-        FindObjectOfType<Snake>().DefinirVelocidade(novaVelocidade);
+        if(float.TryParse(value,out novaVelocidade) && novaVelocidade > 0)
+        {
+            // Chama o método para definir a velocidade da cobra
+            FindObjectOfType<Snake>().DefinirVelocidade(novaVelocidade); 
+        }
+       
+
+    }
+    public void SpawnFood()
+    {    // Se já houver uma comida gerada, destrói antes de criar uma nova
+        if (spawnedFood != null)
+        {
+            Destroy(spawnedFood);
+        }
+
+        // Gera uma posição aleatória dentro dos limites do campo de jogo
+        int randomX = Random.Range(0,diametroDoCampo);
+        int randomY = Random.Range(0, diametroDoCampo);
+
+        // Instancia a comida na nova posição dentro do grid
+        Vector2 spawnPosition = new Vector2(randomX,randomY);
+        spawnedFood = Instantiate(foodPrefab,spawnPosition,Quaternion.identity);
     }
 
-   
+
+
 }
