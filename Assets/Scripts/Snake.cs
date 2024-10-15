@@ -102,4 +102,9 @@ public class Snake : MonoBehaviour
             }
         }
     }
+    private void GameOver()
+    {
+        GameManager.Instance.GameOver();
+        this.enabled = false;
+    }
 }
