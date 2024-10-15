@@ -39,6 +39,27 @@ public class Snake : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        HandGridMoviment();
+    }
+    private void HandGridMoviment()
+    {
+        gridMoveTimer += Time.deltaTime;
+        if(gridMoveTimer > gridMoveTimeMax)
+        {
+            Vector2Int previusHeadPosition = gridMoveDirection;
+            gridPosition += gridMoveDirection;
+            
+             snakePositionList.Insert(0, previusHeadPosition);
+
+            transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
+            //transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
+
+            //UpdateSnakeBody();
+            if(snakePositionList.Count > snakeBodySize)
+            {
+                snakePositionList.RemoveAt(snakePositionList.Count - 1);
+            }
+            gridMoveTimer -= gridMoveTimeMax;
+        }
     }
 }
