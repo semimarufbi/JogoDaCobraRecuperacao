@@ -28,6 +28,11 @@ public class GameManager : MonoBehaviour
     {
         diametroDoCampo = int.Parse(value);
     }
+    public void DefinirVelocidade(string value)
+    {
+        // Chama o método para definir a velocidade da cobra
+        FindObjectOfType<Snake>().DefinirVelocidade(novaVelocidade);
+    }
 
    
 }
