@@ -121,5 +121,15 @@ public class Snake : MonoBehaviour
         snakeBodyParts.Add(newBodyPart.transform);
 
     }
+    private void UpdateSnakeBody()
+    {
+        for (int i = 0; i < snakeBodyParts.Count; i++)
+        {
+            if (i < snakePositionList.Count)
+            {
+                snakeBodyParts[i].position = new Vector3(snakePositionList[i].x,snakePositionList[i].y,0);
+            }
+        }
+    }
 
 }
