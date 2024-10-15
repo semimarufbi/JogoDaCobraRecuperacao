@@ -23,14 +23,14 @@ public class Snake : MonoBehaviour
         gridMoveTimeMax = .5f;
         gridMoveTimer = gridMoveTimeMax;
         gridMoveDirection = new Vector2Int(1, 0);
-        snakePositionList = new List<Vector2Int> {gridPosition };
+        snakePositionList = new List<Vector2Int> { gridPosition };
         snakeBodyParts = new List<Transform>();
         snakeBodySize = 1;
     }
     // Start is called before the first frame update
     void Start()
     {
-        if(pontuacaoManager == null) 
+        if (pontuacaoManager == null)
         {
             pontuacaoManager = FindAnyObjectByType<UIManager>();
         }
@@ -44,22 +44,41 @@ public class Snake : MonoBehaviour
     private void HandGridMoviment()
     {
         gridMoveTimer += Time.deltaTime;
-        if(gridMoveTimer > gridMoveTimeMax)
+        if (gridMoveTimer > gridMoveTimeMax)
         {
             Vector2Int previusHeadPosition = gridMoveDirection;
             gridPosition += gridMoveDirection;
-            
-             snakePositionList.Insert(0, previusHeadPosition);
+
+            snakePositionList.Insert(0, previusHeadPosition);
 
             transform.position = new Vector3(gridPosition.x, gridPosition.y, 0);
             //transform.eulerAngles = new Vector3(0, 0, GetAngleFromVector(gridMoveDirection) - 90);
 
             //UpdateSnakeBody();
-            if(snakePositionList.Count > snakeBodySize)
+            if (snakePositionList.Count > snakeBodySize)
             {
                 snakePositionList.RemoveAt(snakePositionList.Count - 1);
             }
             gridMoveTimer -= gridMoveTimeMax;
+        }
+    }
+    private void HandleInput()
+    {
+        if (Input.GetKeyDown(KeyCode.UpArrow) && gridMoveDirection.y != -1)
+        {
+            gridMoveDirection = new Vector2Int(0, 1);
+        }
+        if (Input.GetKeyDown(KeyCode.DownArrow) && gridMoveDirection.y != 1)
+        {
+            gridMoveDirection = new Vector2Int(0, -1);
+        }
+        if (Input.GetKeyDown(KeyCode.LeftArrow) && gridMoveDirection.x != 1)
+        {
+            gridMoveDirection = new Vector2Int(-1, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.RightArrow) && gridMoveDirection.x != -1)
+        {
+            gridMoveDirection = new Vector2Int(1, 0);
         }
     }
 }
