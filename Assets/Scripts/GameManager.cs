@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         if(float.TryParse(value,out novaVelocidade) && novaVelocidade > 0)
         {
             // Chama o método para definir a velocidade da cobra
-            FindObjectOfType<Snake>().DefinirVelocidade(novaVelocidade); 
+           // FindObjectOfType<Snake>().DefinirVelocidade(novaVelocidade); 
         }
        
 
