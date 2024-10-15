@@ -11,12 +11,11 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
+        pontuacao = 0; //inicializa a pontuaçao
 
-    // Update is called once per frame
-    void Update()
+    }
+    public void AdicionarPonto()
     {
-        
+        pontuacao++; // incrementa a pontuação
     }
 }
