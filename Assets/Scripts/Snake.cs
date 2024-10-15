@@ -81,4 +81,14 @@ public class Snake : MonoBehaviour
             gridMoveDirection = new Vector2Int(1, 0);
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Food"))
+        {
+            GameManager.Instance.OnFoodCollected();
+            pontuacaoManager.AdicionarPonto();
+            //GrowSnake();
+            Destroy(collision.gameObject);
+        }
+    }
 }
