@@ -55,6 +55,11 @@ public class GameManager : MonoBehaviour
         Vector2 spawnPosition = new Vector2(randomX,randomY);
         spawnedFood = Instantiate(foodPrefab,spawnPosition,Quaternion.identity);
     }
+      public void OnFoodCollected()
+    {
+        // QUando a comida for coletada, gera uma nova
+        SpawnFood();
+    }
 
 
 
