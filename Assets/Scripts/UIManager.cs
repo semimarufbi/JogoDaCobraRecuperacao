@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    public TextMeshProUGUI textoPontuacao; // referencia ao componente TextMeshPro
-    private int pontuacao; // Variavel para armazenar a pontuação
+    public TextMeshProUGUI textoPontuacao; // Referência ao componente TextMeshPro
+    private int pontuacao; // Variável para armazenar a pontuação
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        pontuacao = 0; //inicializa a pontuaçao
-        AtualizarTextoPontuacao();
-
+        pontuacao = 0; // Inicializa a pontuação
+        AtualizarTextoPontuacao(); // Atualiza o texto na tela
     }
+
     public void AdicionarPonto()
     {
-        pontuacao++; // incrementa a pontuação
-        AtualizarTextoPontuacao();
+        pontuacao++; // Incrementa a pontuação
+        AtualizarTextoPontuacao(); // Atualiza o texto na tela
     }
+
     private void AtualizarTextoPontuacao()
     {
-        textoPontuacao.text = "PONTOS: " + pontuacao;
+        textoPontuacao.text = "PONTOS: " + pontuacao; // Atualiza o texto exibido
     }
 }
