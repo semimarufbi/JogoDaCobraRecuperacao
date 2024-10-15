@@ -67,6 +67,10 @@ public class GameManager : MonoBehaviour
         // Congela o jogo
         Time.timeScale = 0f;
     }
+    public void ExitGame()
+    {      // Fecha a aplicação
+        Application.Quit();
+    }
 
 
 
