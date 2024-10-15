@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance;
+    public int diametroDoCampo;
+    public int[,] grade;
+    public GameObject foodPrefab;
+    public Camera mainCamera;
+    public GameObject gameOverPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   
 }
