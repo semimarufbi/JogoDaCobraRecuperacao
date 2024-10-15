@@ -154,5 +154,10 @@ public class Snake : MonoBehaviour
         }
 
     }
+     public void DefinirVelocidade(float novaVelocidade)
+    {
+        speed = novaVelocidade;
+        gridMoveTimeMax = 1f/speed;
+    }
 
 }
