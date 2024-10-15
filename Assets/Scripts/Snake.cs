@@ -30,7 +30,10 @@ public class Snake : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if(pontuacaoManager == null) 
+        {
+            pontuacaoManager = FindAnyObjectByType<UIManager>();
+        }
     }
 
     // Update is called once per frame
