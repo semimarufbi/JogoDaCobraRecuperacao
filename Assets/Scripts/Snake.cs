@@ -91,4 +91,15 @@ public class Snake : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
+    private void CheckSelfCollision()
+    {
+        for (int i = 1; i < snakePositionList.Count; i++)
+        {
+            if (gridPosition == snakePositionList[i])
+            {
+                //GameOver();
+                break;
+            }
+        }
+    }
 }
