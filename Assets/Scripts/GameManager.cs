@@ -12,9 +12,17 @@ public class GameManager : MonoBehaviour
     public GameObject gameOverPanel;
 
     // Start is called before the first frame update
-    void Start()
+   
+    public void GerarGrade()
     {
-        
+        grade = new int[diametroDoCampo,diametroDoCampo];
+        CameraSeguidora();
+    }
+    public void CameraSeguidora()
+    {
+
+        mainCamera.transform.position = new Vector3(diametroDoCampo / 2f - 0.5f, diametroDoCampo / 2f - 0.5f, -10);
+        mainCamera.orthographicSize = 2f;
     }
 
    
